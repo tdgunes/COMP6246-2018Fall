@@ -1,0 +1,2 @@
+scikit-learn==0.20.0
+dtreeviz==0.2.0
