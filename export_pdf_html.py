@@ -21,5 +21,8 @@ for f in notebook_files:
     file_name = os.path.basename(f)
     run(pdf_command.format(file_name))
     run(html_command.format(file_name))
+    print("file_name:", file_name)
+    os.rename(os.path.splitext(file_name)[0] + ".html","index.html")
     os.chdir("..")
     print(os.getcwd())
+
