@@ -13117,8 +13117,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="COMP3222/COMP6246-Machine-Learning-Technologies-(2018/19)">COMP3222/COMP6246 Machine Learning Technologies (2018/19)<a class="anchor-link" href="#COMP3222/COMP6246-Machine-Learning-Technologies-(2018/19)">&#182;</a></h1><h2 id="Week-11---Recurrent-Neural-Networks-(Chapter-14)">Week 11 - Recurrent Neural Networks (Chapter 14)<a class="anchor-link" href="#Week-11---Recurrent-Neural-Networks-(Chapter-14)">&#182;</a></h2><p>Follow each section at your own pace, you can have a look at the book or ask questions to demonstrators if you find something confusing.</p>
-<h1 id="1.-Basic-Theory">1. Basic Theory<a class="anchor-link" href="#1.-Basic-Theory">&#182;</a></h1><p>Until now, we looked into basic preceptrons, convolutional neural network (CNN) and how to implement them in TensorFlow. In practice these techniques are used in tasks such as: searching images, self-driving cars, automatic video classification and many more. Surely, there are different neural architectures that are used in Deep Learning. In previous lab, we showed that CNNs are essentially for <code>"processing a grid of values"</code>. However, Deep Learning community also generated an another architecture specifically for <code>"processing a sequence of values"</code> which are called <strong>Recurrent Neural Networks (RNN)</strong> [Goodfellow 2016]. In practice, recurrent neural networks are used for analyzing time series: stock prices, car trajectories, sentiment analysis and more.</p>
-<p><em>Get Motivated</em>: Have a look at <a href="https://distill.pub/2016/handwriting/">this interactive example</a>, which generates new strokes in your handwriting style, which is using RNNs. The model is explained in <a href="https://arxiv.org/abs/1308.0850">this paper</a>.</p>
+<h1 id="1.-Basic-Theory">1. Basic Theory<a class="anchor-link" href="#1.-Basic-Theory">&#182;</a></h1><p>Until now, we looked into basic preceptrons, convolutional neural network (CNN) and how to implement them in TensorFlow. In practice these techniques are used in tasks such as: searching images, self-driving cars, automatic video classification and many more. Surely, there are different network architectures that are used in Deep Learning. In the previous lab, we showed that CNNs are essentially for <code>"processing a grid of values"</code>. However, the Deep Learning community has also generated another architecture specifically for <code>"processing a sequence of values"</code>, which are called <strong>Recurrent Neural Networks (RNN)</strong> [Goodfellow 2016]. In practice, recurrent neural networks are used for analyzing time series: stock prices, car trajectories, sentiment analysis and more.</p>
+<p><em>Get Motivated</em>: Have a look at <a href="https://distill.pub/2016/handwriting/">this interactive example</a>, which generates new strokes in your handwriting style using RNNs. The model is explained in <a href="https://arxiv.org/abs/1308.0850">this paper</a>.</p>
 
 </div>
 </div>
@@ -13133,7 +13133,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[148]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -13190,7 +13190,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[149]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Y0_val</span><span class="p">)</span> <span class="c1"># layers output at t=0</span>
@@ -13224,7 +13224,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[150]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Y1_val</span><span class="p">)</span> <span class="c1"># layers output at t=1</span>
@@ -13263,7 +13263,7 @@ div#notebook {
 <p><em>Exercise 1.2.</em>: How would you define the outputs?</p>
 <p><em>Exercise 1.3.</em>: Why are there five columns?</p>
 <p><em>Exercise 1.4.</em>: Why are there four rows?</p>
-<p><em>Exercise 1.5.</em>: What would be difference between <code>instance1</code> at $t=0$ and <code>instance1</code> at $t=1$?</p>
+<p><em>Exercise 1.5.</em>: What would be the difference between <code>instance1</code> at $t=0$ and <code>instance1</code> at $t=1$?</p>
 <p><em>Exercise 1.6.</em>: What is the difference between <code>instance1</code> and <code>instance2</code> at $t=1$?</p>
 
 </div>
@@ -13272,15 +13272,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Predicting-Time-Series">2. Predicting Time Series<a class="anchor-link" href="#2.-Predicting-Time-Series">&#182;</a></h1><p>Let's look at a simple use of RNNs with time series, these time series could be stock prices, brain wave patterns and so on. Our objective could be predicting the stock price in future, given the available data that we have.</p>
-<p>Let's define an arbitary sinus function for stock prices <code>time_series(t)</code> to make our predictions.</p>
+<h1 id="2.-Predicting-Time-Series">2. Predicting Time Series<a class="anchor-link" href="#2.-Predicting-Time-Series">&#182;</a></h1><p>Let's look at a simple use of RNNs with time series, these time series could be stock prices, brain wave patterns and so on. Our objective could be predicting the future stock price, given the available data that we have.</p>
+<p>Let's define an arbitary sine function for stock prices <code>time_series(t)</code> to make our predictions.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[151]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">reset_graph</span><span class="p">()</span>
@@ -13366,7 +13366,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[158]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="o">=</span> <span class="n">next_batch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
@@ -13420,7 +13420,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[159]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">reset_graph</span><span class="p">()</span>
@@ -13493,7 +13493,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[154]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span>
@@ -13509,7 +13509,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[154]:</div>
+    <div class="prompt output_prompt">Out[0]:</div>
 
 
 
@@ -13545,7 +13545,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[155]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Testing the model&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -13589,8 +13589,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Exercise 2.1. Add comments to the code blocks above. Do you understand the purpose of each line?</p>
-<p>Exercise 2.2. How can you improve <code>MSE</code>? <em>(Tip: Remember Lab 4: Gradient Descent)</em></p>
-<p>Exercise 2.3. Implement <code>RMSE</code> instead of <code>MSE</code>, compare the test plots.</p>
+<p>Exercise 2.2. How can you improve the <code>MSE</code>? <em>(Tip: Remember Lab 4: Gradient Descent)</em></p>
+<p>Exercise 2.3. Implement the <code>RMSE</code> instead of the <code>MSE</code>, compare the test plots.</p>
 
 </div>
 </div>
@@ -13598,14 +13598,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Creative-RNNs">3. Creative RNNs<a class="anchor-link" href="#3.-Creative-RNNs">&#182;</a></h1><p>We can use RNNs to generate sequences, below you are going to use the model we trained. You should expect some resemblance to the original time series.</p>
+<h1 id="3.-Generative-RNNs">3. Generative RNNs<a class="anchor-link" href="#3.-Generative-RNNs">&#182;</a></h1><p>We can use RNNs to generate sequences, below you are going to use the model we trained. You should expect some resemblance to the original time series.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[157]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>                     
@@ -13666,9 +13666,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Exercise 3.1. Does your plot not resemble to the actual time series? Why do you think so?</p>
-<p>Exercise 3.2. Change your optimizer to <code>AdamOptimizer</code>, what do you think is changed?</p>
-<p>Exercise 3.3. Try different activation functions. (e.g. logit, tanh,</p>
+<p>Exercise 3.1. Does your plot resemble the actual time series? Why do you think so?</p>
+<p>Exercise 3.2. Change your optimizer to <code>AdamOptimizer</code>, what do you think has changed?</p>
+<p>Exercise 3.3. Try different activation functions. (e.g. logit, tanh,  ...)</p>
 
 </div>
 </div>
@@ -13678,12 +13678,12 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Recap">Recap<a class="anchor-link" href="#Recap">&#182;</a></h1><p>In this lab, we demonstrated these concepts:</p>
 <ul>
-<li>from theory to implementation, how a simple RNN is implemented</li>
+<li>from theory to implementation, how a simple RNN is works</li>
 <li>how to predict a time series with RNN </li>
-<li>which parameters to look out for and for improving the predictions</li>
-<li>generation of sequences from an RNN</li>
+<li>which parameters to look out for inorder to improve the predictions</li>
+<li>generation of sequences with a RNN</li>
 </ul>
-<p>As before, of course there are some materials that we have not be able to cover. In your free time, you can have a look at:</p>
+<p>As in the previous labs, there is some material that we have not been able to cover. In your free time, you can have a look at:</p>
 <ul>
 <li>LTSM Cells and GRU Cells</li>
 <li>NLP Applications with RNNs</li>
@@ -13703,7 +13703,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
